@@ -1,0 +1,14 @@
+[paths]
+input_dir = "input"
+output_dir = "output"
+
+[scheduler]
+default_reward_decay = 0.95
+
+[visualization]
+dependency_graph_size = "20,12"
+gantt_chart_height_per_task = 40
+
+[llm]
+model = "meta/meta-llama-3-8b-instruct"
+max_tokens = 512

@@ -1,0 +1,8 @@
+pygraphviz
+replicate
+click
+python-dotenv
+matplotlib
+networkx
+plotly
+toml
