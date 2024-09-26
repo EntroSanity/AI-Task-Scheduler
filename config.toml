@@ -12,3 +12,18 @@ gantt_chart_height_per_task = 40
 [llm]
 model = "meta/meta-llama-3-8b-instruct"
 max_tokens = 512
+
+[s3]
+bucket = "schedule-input"
+input_key = "project_input.json"
+output_key = "schedule_result.json"
+dependency_graph_key = "dependency_graph.png"
+gantt_chart_key = "gantt_chart.html"
+
+[server]
+host = "0.0.0.0"
+port = 8080
+debug = false
+
+[api]
+remove_bg_key = "9jMW31svBHLKJaKeVdufMPXB"

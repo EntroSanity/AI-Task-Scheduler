@@ -6,3 +6,7 @@ matplotlib
 networkx
 plotly
 toml
+flask
+flask-cors
+requests
+Pillow

@@ -79,8 +79,10 @@ class Scheduler:
         return self.scheduled_tasks
 
     def _analyze_tasks(self):
-        for task in self.tasks.values():
-            task.llm_analysis = self.llm_analyzer.analyze(task)
+        tasks = list(self.tasks.values())
+        analyzed_tasks = self.llm_analyzer.analyze_batch(tasks)
+        if analyzed_tasks:
+            self.tasks = {task.id: task for task in analyzed_tasks}
 
     def _update_completed_tasks(self):
         completed = [task_id for task_id, end_time in self.in_progress.items() if end_time <= self.current_time]
