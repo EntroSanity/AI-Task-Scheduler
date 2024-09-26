@@ -1,4 +1,6 @@
 import replicate
+from typing import List
+from ..models.task import Task
 import json
 from ..config import CONFIG
 import logging
@@ -7,26 +9,47 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class LLMAnalyzer:
-    def analyze_batch(self, tasks):
+    def analyze_batch(self, tasks: List[Task]) -> List[Task]:
         try:
-            system_prompt = "You are an AI assistant that analyzes task descriptions and provides detailed insights."
+            logger.info(f"Analyzing {len(tasks)} tasks")
+            system_prompt = (
+                "You are an AI assistant that analyzes task descriptions and provides detailed insights. "
+                "Your responses must be in valid JSON format, exactly matching the structure provided."
+            )
             user_prompt = "Analyze the following tasks:\n\n"
             
             for i, task in enumerate(tasks, 1):
                 user_prompt += f"Task {i}:\nTitle: {task.title}\nDescription: {task.description}\n\n"
             
             user_prompt += """For each task, provide the following information:
-1. Estimated complexity (1-10)
-2. Potential risks (list at least 2-3 risks, separated by semicolons)
-3. Required skills (list at least 2-3 skills, separated by semicolons)
-4. Suggested priority (low/medium/high)
+1. Estimated complexity (integer from 1 to 10)
+2. Potential risks (list exactly 3 risks)
+3. Required skills (list exactly 3 skills)
+4. Suggested priority (string: "low", "medium", or "high")
 
-Respond in JSON format with task numbers as keys. Ensure all fields are filled for each task."""
+Respond in JSON format using the following structure:
+{
+    "Task 1": {
+        "estimatedComplexity": 5,
+        "potentialRisks": ["Risk 1", "Risk 2", "Risk 3"],
+        "requiredSkills": ["Skill 1", "Skill 2", "Skill 3"],
+        "suggestedPriority": "medium"
+    },
+    "Task 2": {
+        "estimatedComplexity": 7,
+        "potentialRisks": ["Risk 1", "Risk 2", "Risk 3"],
+        "requiredSkills": ["Skill 1", "Skill 2", "Skill 3"],
+        "suggestedPriority": "high"
+    }
+}
+
+Ensure all fields are filled for each task and maintain this exact JSON structure. Do not include any text before or after the JSON object."""
 
             input_data = {
                 "system_prompt": system_prompt,
                 "prompt": user_prompt,
                 "max_new_tokens": CONFIG['llm']['max_tokens'],
+                "temperature": 0.1,  # Lower temperature for more consistent output
                 "prompt_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{system_prompt}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n"
             }
 
@@ -34,30 +57,28 @@ Respond in JSON format with task numbers as keys. Ensure all fields are filled f
                 CONFIG['llm']['model'],
                 input=input_data
             )
-
-            response_text = "".join(output)
-            json_start = response_text.find('{')
-            json_end = response_text.rfind('}') + 1
-            json_str = response_text[json_start:json_end]
-
-            analysis_results = json.loads(json_str)
-            # Process the results
+            response_text = "".join(output).strip()
+            logger.info(f"Received analysis results for {len(tasks)} tasks")
+            logger.info(f"Analysis results: {response_text}")
+            
+            try:
+                analysis_results = json.loads(response_text)
+            except json.JSONDecodeError as e:
+                logger.error(f"JSON decode error: {e}")
+                return None
             for i, task in enumerate(tasks, 1):
-                task_key_1 = str(i)
-                task_key_2 = f"Task {i}"
-                # Try both possible keys
-                task_analysis = analysis_results.get(task_key_1, analysis_results.get(task_key_2, {}))
+                task_key = f"Task {i}"
+                task_analysis = analysis_results.get(task_key, {})
                 
-                if task_analysis:  # Only process if task_analysis is not empty
+                if task_analysis:
                     task.llm_analysis = {
-                        "estimated_complexity": self._get_int_value(task_analysis, "estimated complexity", 5),
-                        "potential_risks": self._parse_list(self._get_value(task_analysis, "potential risks")),
-                        "required_skills": self._parse_list(self._get_value(task_analysis, "required skills")),
-                        "suggested_priority": self._get_value(task_analysis, "suggested priority", "medium").lower()
+                        "estimated_complexity": task_analysis.get("estimatedComplexity", 5),
+                        "potential_risks": task_analysis.get("potentialRisks", ["No data provided"]),
+                        "required_skills": task_analysis.get("requiredSkills", ["No data provided"]),
+                        "suggested_priority": task_analysis.get("suggestedPriority", "medium").lower()
                     }
-                    print("Processed task analysis:", task.llm_analysis)
                 else:
-                    print(f"Warning: No analysis found for {task_key}")
+                    logger.warning(f"No analysis found for {task_key}")
                     task.llm_analysis = {
                         "estimated_complexity": 5,
                         "potential_risks": ["No data provided"],
@@ -68,7 +89,7 @@ Respond in JSON format with task numbers as keys. Ensure all fields are filled f
             return tasks
 
         except Exception as e:
-            print(f"Error analyzing tasks: {e}")
+            logger.error(f"Error analyzing tasks: {e}", exc_info=True)
             return None
 
     @staticmethod

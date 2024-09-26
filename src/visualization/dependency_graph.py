@@ -1,11 +1,9 @@
-from ..config import CONFIG
 import networkx as nx
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-import numpy as np
+import os
+from ..config import CONFIG
+import requests
 from PIL import Image
 import io
-import requests
 
 class DependencyGraphVisualizer:
     @staticmethod
@@ -25,39 +23,32 @@ class DependencyGraphVisualizer:
         A.edge_attr.update(color="black", arrowsize="0.9")
 
         A.layout(prog="dot")
-        
-        # Save to a BytesIO object instead of a file
-        img_data = io.BytesIO()
-        A.draw(img_data, format='png')
-        img_data.seek(0)
+        temp_file = output_file + "_temp.png"
+        A.draw(temp_file)
 
         # Remove background
-        img_no_bg = DependencyGraphVisualizer.remove_background(img_data)
-
-        plt.figure(figsize=(12, 8))
-        plt.imshow(img_no_bg)
-        plt.axis('off')
-        plt.tight_layout()
-        plt.savefig(output_file, format="png", dpi=300, bbox_inches='tight', transparent=True)
-        plt.close()
-
-    @staticmethod
-    def remove_background(img_data):
         try:
-            response = requests.post(
-                'https://api.remove.bg/v1.0/removebg',
-                files={'image_file': img_data},
-                data={'size': 'auto'},
-                headers={'X-Api-Key': CONFIG['api']['remove_bg_key']},
-            )
-            if response.status_code == requests.codes.ok:
-                img_no_bg = Image.open(io.BytesIO(response.content))
-                return np.array(img_no_bg)
-            else:
-                print("Error removing background:", response.status_code, response.text)
-                # If background removal fails, return the original image
-                return mpimg.imread(img_data)
+            with open(temp_file, 'rb') as file:
+                response = requests.post(
+                    'https://api.remove.bg/v1.0/removebg',
+                    files={'image_file': file},
+                    data={'size': 'auto'},
+                    headers={'X-Api-Key': CONFIG['api']['remove_bg_key']},
+                )
+                if response.status_code == requests.codes.ok:
+                    with Image.open(io.BytesIO(response.content)) as img:
+                        img.save(output_file, 'PNG')
+                    print(f"Dependency graph with removed background saved to {output_file}")
+                else:
+                    print(f"Error removing background: {response.status_code} {response.text}")
+                    print(f"Using original image without background removal")
+                    os.rename(temp_file, output_file)
         except Exception as e:
-            print(f"Exception during background removal: {str(e)}")
-            # If any exception occurs, return the original image
-            return mpimg.imread(img_data)
+            print(f"Error in background removal: {str(e)}")
+            print(f"Using original image without background removal")
+            os.rename(temp_file, output_file)
+        finally:
+            if os.path.exists(temp_file):
+                os.remove(temp_file)
+
+        return output_file

@@ -45,22 +45,24 @@ class Scheduler:
         return False
 
     def _break_dependency_cycle(self):
-        # Simple strategy: remove the dependency with the lowest priority
         min_priority = float('inf')
         edge_to_remove = None
 
         for task_id, deps in self.dependency_graph.items():
             task_priority = self.priority_calculator.calculate(self.tasks[task_id], 0, self.tasks[task_id].llm_analysis)
             for dep in deps:
-                dep_priority = self.priority_calculator.calculate(self.tasks[dep], 0, self.tasks[dep].llm_analysis)
-                if dep_priority < min_priority:
-                    min_priority = dep_priority
-                    edge_to_remove = (task_id, dep)
+                if dep in self.dependency_graph and task_id in self.dependency_graph[dep]:
+                    dep_priority = self.priority_calculator.calculate(self.tasks[dep], 0, self.tasks[dep].llm_analysis)
+                    if dep_priority < min_priority:
+                        min_priority = dep_priority
+                        edge_to_remove = (task_id, dep)
 
         if edge_to_remove:
             self.dependency_graph[edge_to_remove[0]].remove(edge_to_remove[1])
             self.tasks[edge_to_remove[0]].dependencies.remove(edge_to_remove[1])
             print(f"Removed dependency: {edge_to_remove[1]} -> {edge_to_remove[0]}")
+        else:
+            print("No edge to remove found")
 
     def schedule(self):
         self._analyze_tasks()

@@ -1,6 +1,10 @@
 [paths]
 input_dir = "input"
 output_dir = "output"
+project_input = "input/project_input.json"
+schedule_output = "output/schedule_result.json"
+dependency_graph = "output/dependency_graph.png"
+gantt_chart = "output/gantt_chart.html"
 
 [scheduler]
 default_reward_decay = 0.95
@@ -11,14 +15,7 @@ gantt_chart_height_per_task = 40
 
 [llm]
 model = "meta/meta-llama-3-8b-instruct"
-max_tokens = 512
-
-[s3]
-bucket = "schedule-input"
-input_key = "project_input.json"
-output_key = "schedule_result.json"
-dependency_graph_key = "dependency_graph.png"
-gantt_chart_key = "gantt_chart.html"
+max_tokens = 12800
 
 [server]
 host = "0.0.0.0"

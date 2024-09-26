@@ -60,6 +60,7 @@ Legend:
 - Matplotlib (for visualization)
 - Plotly (for Gantt chart creation)
 - Click (for CLI)
+- https://pygraphviz.github.io/documentation/stable/install.html
 
 (A `requirements.txt` file is included in the project root for easy installation of all dependencies.)
 
