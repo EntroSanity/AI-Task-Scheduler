@@ -1,13 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Users, Clock, TrendingDown, Award, Link as LinkIcon, Plus, Save, FileText, Type } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+
 
 interface Task {
     id: string
@@ -34,6 +36,7 @@ const getColorByPoints = (points: number) => {
 
 export function SampleTaskCard({ onAddTask, nextTaskId }: SampleTaskCardProps) {
     const [isEditing, setIsEditing] = useState(false)
+    const [showSaveHint, setShowSaveHint] = useState(false)
     const [newTask, setNewTask] = useState<Task>({
         id: nextTaskId,
         title: '',
@@ -45,6 +48,13 @@ export function SampleTaskCard({ onAddTask, nextTaskId }: SampleTaskCardProps) {
         description: ''
     })
 
+    useEffect(() => {
+        if (showSaveHint) {
+            const timer = setTimeout(() => setShowSaveHint(false), 5000)
+            return () => clearTimeout(timer)
+        }
+    }, [showSaveHint])
+
     const handleEdit = () => {
         setIsEditing(true)
     }
@@ -53,6 +63,7 @@ export function SampleTaskCard({ onAddTask, nextTaskId }: SampleTaskCardProps) {
         if (newTask.title && newTask.baseReward > 0) {
             onAddTask(newTask)
             setIsEditing(false)
+            setShowSaveHint(true)
             setNewTask({
                 id: nextTaskId,
                 title: '',
@@ -113,8 +124,8 @@ export function SampleTaskCard({ onAddTask, nextTaskId }: SampleTaskCardProps) {
                             type="number"
                             value={newTask.requiredTime}
                             onChange={handleInputChange}
-                            placeholder="Required Time (hours)"
-                            aria-label="Required Time (hours)"
+                            placeholder="Required Time (days)"
+                            aria-label="Required Time (days)"
                             className="flex-grow"
                         />
                     </div>
@@ -231,6 +242,23 @@ export function SampleTaskCard({ onAddTask, nextTaskId }: SampleTaskCardProps) {
                     {renderContent()}
                 </CardContent>
             </Card>
+            <AnimatePresence>
+                {showSaveHint && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className="mt-4"
+                    >
+                        <Alert>
+                            <AlertDescription>
+                                Task added successfully! Don't forget to click the "Save Changes" button to persist your changes.
+                            </AlertDescription>
+                        </Alert>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.div>
     )
 }

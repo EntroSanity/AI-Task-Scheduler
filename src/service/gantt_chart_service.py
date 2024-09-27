@@ -12,7 +12,7 @@ class GanttChartService:
 
     @classmethod
     def generate_from_file(cls):
-        """Generate Gantt chart from local file"""
+        """Generate Gantt chart data from local file"""
         input_file = CONFIG['paths']['schedule_output']
         output_file = CONFIG['paths']['gantt_chart']
 
@@ -22,9 +22,10 @@ class GanttChartService:
         return cls._generate_chart(scheduled_tasks, output_file)
 
     @classmethod
-    def get_chart_file(cls):
-        """Retrieve the Gantt chart file path"""
+    def get_chart_data(cls):
+        """Retrieve the Gantt chart data"""
         file_path = CONFIG['paths']['gantt_chart']
         if not os.path.exists(file_path):
-            raise FileNotFoundError(f"Gantt chart not found: {file_path}")
-        return file_path
+            raise FileNotFoundError(f"Gantt chart data not found: {file_path}")
+        with open(file_path, 'r') as f:
+            return json.load(f)

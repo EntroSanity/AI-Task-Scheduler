@@ -83,7 +83,7 @@ export default function ProjectList() {
                                         <strong>Required Resources:</strong> {task.requiredResources.join(', ') || 'None'}
                                     </div>
                                     <div>
-                                        <strong>Required Time:</strong> {task.requiredTime} {task.requiredTime === 1 ? 'hour' : 'hours'}
+                                        <strong>Required Time:</strong> {task.requiredTime} {task.requiredTime === 1 ? 'day' : 'days'}
                                     </div>
                                     <div>
                                         <strong>Reward Decay Factor:</strong> {task.rewardDecayFactor}

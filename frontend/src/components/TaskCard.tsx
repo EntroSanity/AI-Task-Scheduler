@@ -105,8 +105,8 @@ export function TaskCard({ task: initialTask, onTaskUpdate, onTaskDelete, onTask
                             type="number"
                             value={editedTask.requiredTime}
                             onChange={handleInputChange}
-                            placeholder="Required Time (hours)"
-                            aria-label="Required Time (hours)"
+                            placeholder="Required Time (days)"
+                            aria-label="Required Time (days)"
                         />
                     </div>
                     <div className="flex items-center space-x-2">
@@ -162,7 +162,7 @@ export function TaskCard({ task: initialTask, onTaskUpdate, onTaskDelete, onTask
                 </div>
                 <div className="flex items-center text-gray-700">
                     <Clock className="w-4 h-4 mr-2 text-indigo-600" />
-                    <span>{task.requiredTime} hours</span>
+                    <span>{task.requiredTime} days</span>
                 </div>
                 <div className="flex items-center text-gray-700">
                     <TrendingDown className="w-4 h-4 mr-2 text-indigo-600" />

@@ -4,7 +4,7 @@ output_dir = "output"
 project_input = "input/project_input.json"
 schedule_output = "output/schedule_result.json"
 dependency_graph = "output/dependency_graph.png"
-gantt_chart = "output/gantt_chart.html"
+gantt_chart = "output/gantt_chart.json"
 
 [scheduler]
 default_reward_decay = 0.95

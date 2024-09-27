@@ -13,9 +13,9 @@
       "llm_analysis": {
         "estimated_complexity": 7,
         "potential_risks": [
-          "Stakeholder buy-in",
-          "Requirements gathering limitations",
-          "Scope changes"
+          "Stakeholder resistance to change",
+          "Requirements gathering bias",
+          "Insufficient documentation"
         ],
         "required_skills": [
           "Requirements gathering",
@@ -37,9 +37,9 @@
       "llm_analysis": {
         "estimated_complexity": 8,
         "potential_risks": [
-          "Partnership limitations",
+          "Partnership agreement issues",
           "Integration challenges",
-          "Conflict resolution"
+          "Insufficient communication"
         ],
         "required_skills": [
           "Business development",
@@ -63,13 +63,13 @@
         "estimated_complexity": 8,
         "potential_risks": [
           "Design flaws",
-          "Technical debt",
-          "System architecture limitations"
+          "Inadequate testing",
+          "Lack of design reviews"
         ],
         "required_skills": [
           "System design",
-          "Technical expertise",
-          "Problem-solving"
+          "Architecture",
+          "Technical expertise"
         ],
         "suggested_priority": "high"
       }
@@ -86,16 +86,16 @@
       "llm_analysis": {
         "estimated_complexity": 6,
         "potential_risks": [
-          "Development delays",
           "Code quality issues",
-          "Integration challenges"
+          "Integration challenges",
+          "Insufficient testing"
         ],
         "required_skills": [
           "Programming",
-          "Development methodologies",
+          "Development",
           "Testing"
         ],
-        "suggested_priority": "high"
+        "suggested_priority": "medium"
       }
     },
     {
@@ -110,40 +110,16 @@
       "llm_analysis": {
         "estimated_complexity": 5,
         "potential_risks": [
-          "Scope creep",
+          "Unclear project scope",
           "Stakeholder misalignment",
-          "Project timeline delays"
+          "Insufficient resources"
         ],
         "required_skills": [
           "Project management",
           "Communication",
-          "Team leadership"
+          "Stakeholder management"
         ],
         "suggested_priority": "medium"
-      }
-    },
-    {
-      "id": "T5",
-      "title": "Testing Phase 1",
-      "start_time": 12,
-      "end_time": 15,
-      "resources": [
-        "Tohfah"
-      ],
-      "actual_reward": 11.297181459240004,
-      "llm_analysis": {
-        "estimated_complexity": 6,
-        "potential_risks": [
-          "Testing limitations",
-          "Bug introduction",
-          "Regression testing challenges"
-        ],
-        "required_skills": [
-          "Testing",
-          "Debugging",
-          "Analytical thinking"
-        ],
-        "suggested_priority": "high"
       }
     },
     {
@@ -158,16 +134,40 @@
       "llm_analysis": {
         "estimated_complexity": 7,
         "potential_risks": [
-          "Feature creep",
-          "Code refactoring challenges",
-          "Performance optimization limitations"
+          "Code refactoring issues",
+          "Integration challenges",
+          "Insufficient testing"
         ],
         "required_skills": [
           "Programming",
-          "Development methodologies",
-          "Problem-solving"
+          "Development",
+          "Testing"
         ],
         "suggested_priority": "high"
+      }
+    },
+    {
+      "id": "T5",
+      "title": "Testing Phase 1",
+      "start_time": 12,
+      "end_time": 15,
+      "resources": [
+        "Tohfah"
+      ],
+      "actual_reward": 11.297181459240004,
+      "llm_analysis": {
+        "estimated_complexity": 6,
+        "potential_risks": [
+          "Test case inadequacy",
+          "Bug introduction",
+          "Insufficient testing"
+        ],
+        "required_skills": [
+          "Testing",
+          "Debugging",
+          "Analytical thinking"
+        ],
+        "suggested_priority": "medium"
       }
     },
     {
@@ -183,9 +183,9 @@
       "llm_analysis": {
         "estimated_complexity": 8,
         "potential_risks": [
-          "Testing limitations",
-          "Regression testing challenges",
-          "System integration issues"
+          "Regression testing issues",
+          "Performance testing challenges",
+          "Insufficient testing"
         ],
         "required_skills": [
           "Testing",
@@ -208,9 +208,9 @@
       "llm_analysis": {
         "estimated_complexity": 5,
         "potential_risks": [
-          "Deployment delays",
-          "Production environment issues",
-          "Post-deployment verification challenges"
+          "Deployment issues",
+          "Production environment setup",
+          "Insufficient testing"
         ],
         "required_skills": [
           "Deployment",
@@ -232,67 +232,19 @@
       "llm_analysis": {
         "estimated_complexity": 9,
         "potential_risks": [
-          "Marketing strategy limitations",
+          "Marketing strategy failure",
           "Target audience misalignment",
-          "Competition"
+          "Insufficient budget"
         ],
         "required_skills": [
           "Marketing",
-          "Branding",
-          "Communication"
-        ],
-        "suggested_priority": "high"
-      }
-    },
-    {
-      "id": "T10",
-      "title": "Operations",
-      "start_time": 23,
-      "end_time": 25,
-      "resources": [
-        "Mingrui"
-      ],
-      "actual_reward": 10,
-      "llm_analysis": {
-        "estimated_complexity": 4,
-        "potential_risks": [
-          "Operations delays",
-          "Resource allocation issues",
-          "Process inefficiencies"
-        ],
-        "required_skills": [
-          "Operations management",
-          "Process improvement",
-          "Troubleshooting"
-        ],
-        "suggested_priority": "medium"
-      }
-    },
-    {
-      "id": "T11",
-      "title": "Strategy",
-      "start_time": 25,
-      "end_time": 29,
-      "resources": [
-        "Yuhan"
-      ],
-      "actual_reward": 4.470348358154297e-07,
-      "llm_analysis": {
-        "estimated_complexity": 9,
-        "potential_risks": [
-          "Strategy misalignment",
-          "Long-term planning limitations",
-          "Competitor analysis"
-        ],
-        "required_skills": [
-          "Strategy development",
-          "Business analysis",
-          "Problem-solving"
+          "Advertising",
+          "Branding"
         ],
         "suggested_priority": "high"
       }
     }
   ],
-  "total_time": 29,
-  "total_reward": 224.60127381421222
+  "total_time": 23,
+  "total_reward": 214.60127336717738
 }

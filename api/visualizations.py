@@ -22,7 +22,7 @@ def create_gantt_chart():
     try:
         output_path = GanttChartService.generate_from_file()
         return jsonify({
-            "message": "Gantt chart created successfully",
+            "message": "Gantt chart data created successfully",
             "file_path": output_path
         }), 200
     except FileNotFoundError as e:
@@ -45,10 +45,10 @@ def get_dependency_graph():
 @api.route('/gantt-chart', methods=['GET'])
 def get_gantt_chart():
     try:
-        file_path = GanttChartService.get_chart_file()
-        return send_file(file_path, mimetype='text/html')
+        chart_data = GanttChartService.get_chart_data()
+        return jsonify(chart_data), 200
     except FileNotFoundError as e:
         return jsonify({"error": str(e)}), 404
     except Exception as e:
-        current_app.logger.error(f"An error occurred while retrieving the Gantt chart: {str(e)}")
+        current_app.logger.error(f"An error occurred while retrieving the Gantt chart data: {str(e)}")
         return jsonify({"error": "An unexpected error occurred"}), 500
