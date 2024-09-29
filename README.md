@@ -2,7 +2,25 @@
 
 ## Overview
 
-The AI-Powered Task Scheduler is an advanced project management tool that leverages machine learning to optimize task scheduling. It handles complex project scenarios, including dependency cycles and resource conflicts, while maximizing project rewards and minimizing completion time.
+The AI-Powered Task Scheduler is an advanced project management tool that leverages machine learning to optimize task scheduling. It handles complex project scenarios, including dependency cycles and resource conflicts, while maximizing project rewards and minimizing completion time. This application consists of a Python backend for task analysis and scheduling, and a frontend interface for user interaction and visualization.
+
+## Quick Start
+For a quick setup and run of the AI-Powered Task Scheduler, you can use our Docker image. Follow these steps:
+1. Pull the Docker image:
+```
+docker pull ntosnaky/ai-task-scheduler:v0.1
+```
+2. Run the Docker container:
+```
+docker run -p 3001:3000 -p 8080:8080 \                      
+  -e REPLICATE_API_TOKEN=<your_replicate_API_token> \
+  ntosnaky/ai-task-scheduler:v0.1
+```
+3. Access the application: Open your web browser and go to:
+```
+http://localhost:3001/
+```
+Note: Make sure you have Docker installed on your system before running these commands. This method allows you to quickly set up and run the AI-Powered Task Scheduler without needing to install dependencies or set up the development environment manually.
 
 ## Features
 
@@ -14,11 +32,9 @@ The AI-Powered Task Scheduler is an advanced project management tool that levera
 | Visualization Tools           | Generates dependency graphs and Gantt charts for clear project visualization.                   | ✅      |
 | Command-Line Interface        | Basic CLI for running schedules and generating visualizations.                                  | ✅      |
 | Advanced Scheduling Algorithm | Implement more sophisticated scheduling techniques, considering multiple optimization criteria. | 🚧      |
-| Enhanced LLM Integration      | Deeper integration of LLM for more accurate task analysis and intelligent decision-making.      | 🔜      |
-| Resource Optimization         | Advanced algorithms for optimal resource allocation and load balancing.                         | 🔜      |
-| User-Friendly GUI             | Develop a graphical user interface for easier interaction and visualization.                    | 🔜      |
-| Real-Time Updates             | Enable real-time updates and rescheduling as project parameters change.                         | 🔜      |
-| Multi-Project Management      | Extend the system to handle multiple projects simultaneously.                                   | 🔜      |
+| Enhanced LLM Integration      | Deeper integration of LLM for more accurate task analysis and intelligent decision-making.      | ✅      |
+| Resource Optimization         | Advanced algorithms for optimal resource allocation and load balancing.                         | ✅      |
+| User-Friendly GUI             | Develop a graphical user interface for easier interaction and visualization.                    | ✅      |
 | Reporting and Analytics       | Generate comprehensive reports and analytics on project performance.                            | 🔜      |
 
 Legend:
@@ -28,41 +44,56 @@ Legend:
 
 ## Project Structure
 
-- `src/`: Main source code directory
-  - `cli.py`: Defines the command-line interface for the application.
-  - `data/`: 
-    - `loader.py`: Handles loading and parsing of input data.
-  - `scheduling/`: 
-    - `scheduler.py`: Core scheduling algorithm implementation.
-    - `priority.py`: Calculates task priorities based on various factors.
-  - `analysis/`:
-    - `llm_analyzer.py`: Integrates with LLM for task analysis.
-  - `visualization/`:
-    - `dependency_graph.py`: Generates task dependency visualizations.
-    - `gantt_chart.py`: Creates Gantt charts for scheduled tasks.
-  - `models/`:
-    - `task.py`: Defines the Task class and its properties.
+- `api/`: API endpoints for the application
+  - `projects.py`: Handles project-related API requests
+  - `scheduler.py`: Manages scheduling API requests
+  - `visualizations.py`: Handles visualization-related API requests
+- `frontend/`: Contains the frontend application code
 - `input/`: Directory for input files
   - `project_input.json`: Example input file for task scheduling
 - `output/`: Directory for generated files
-  - `schedule_result.json`: Generated schedule output
   - `dependency_graph.png`: Generated dependency graph
   - `gantt_chart.html`: Generated Gantt chart
-- `main.py`: Entry point of the application, integrates all components.
+  - `gantt_chart.json`: JSON data for Gantt chart
+  - `schedule_result.json`: Generated schedule output
+- `src/`: Main source code directory
+  - `analysis/`: 
+    - `llm_analyzer.py`: Integrates with LLM for task analysis
+  - `data/`:
+    - `loader.py`: Handles loading and parsing of input data
+  - `models/`:
+    - `task.py`: Defines the Task class and its properties
+  - `scheduling/`:
+    - `priority.py`: Calculates task priorities based on various factors
+    - `scheduler.py`: Core scheduling algorithm implementation
+  - `service/`:
+    - `dependency_graph_service.py`: Service for generating dependency graphs
+    - `gantt_chart_service.py`: Service for creating Gantt charts
+    - `scheduler_service.py`: Service for task scheduling
+  - `visualization/`:
+    - `dependency_graph.py`: Generates task dependency visualizations
+    - `gantt_chart.py`: Creates Gantt charts for scheduled tasks
+  - `config.py`: Configuration settings for the application
+- `.dockerignore`: Specifies files to be ignored by Docker
 - `.env`: Environment variables configuration (e.g., API keys)
-- `requirements.txt`: List of project dependencies
+- `.gitignore`: Specifies files to be ignored by Git
+- `config.toml`: Configuration file for various application settings
+- `Dockerfile`: Instructions for building the Docker image
+- `LICENSE`: License information for the project
+- `main.py`: Entry point of the application, integrates all components
+- `requirements.txt`: List of Python dependencies
 
 ## Dependencies
 
 - Python 3.10+
+- [PyGraphviz](https://pygraphviz.github.io/documentation/stable/install.html)
 - Replicate API (for LLM integration)
 - NetworkX (for dependency graph creation)
 - Matplotlib (for visualization)
 - Plotly (for Gantt chart creation)
 - Click (for CLI)
-- https://pygraphviz.github.io/documentation/stable/install.html
 
-(A `requirements.txt` file is included in the project root for easy installation of all dependencies.)
+(A `requirements.txt` file is included in the project root for easy installation of all dependencies. Please ensure to review the PyGraphviz installation guide before proceeding with the installation of this dependency.)
 
 ## Configuration
 
@@ -76,6 +107,7 @@ The project uses a `config.toml` file for various settings. You can modify this 
 The `config.toml` file is located in the project root directory.
 
 ## Installation
+### Backend
 1. Clone the repository
 ```
 git clone https://github.com/EntroSanity/AI-Task-Scheduler.git
@@ -93,24 +125,36 @@ pip install -r requirements.txt
 ```
 REPLICATE_API_TOKEN=<your_api_key_here>
 ```
+### Frontend
+1. Navigate to the frontend directory:
+```bash
+cd frontend/
+```
+2. Install the required npm packages:
+```bash
+npm install
+```
+
 
 ## Usage
-Start by placing your input JSON file in the `input/` directory.
-### Running the Scheduler
-To schedule tasks:
+To run the AI-Powered Task Scheduler:
+1. Start the backend server:
 ```bash
-python main.py schedule --input input/project_input.json --output schedule_result.json
+python main.py
 ```
-### Generating Visualizations
-To create a dependency graph:
+This will start the backend server, typically on port 8080.
+
+2. In a new terminal, start the frontend development server:
 ```bash
-python main.py dependency --input input/project_input.json --output dependency_graph.png
+cd frontend
+npm run dev
 ```
-To create a Gantt chart (after scheduling):
-```bash
-python main.py gantt --schedule schedule_result.json --output gantt_chart.html
-```
-Note: All generated files will be saved in the `output/` directory.
+This will start the frontend development server, typically on port 3000 or 3001.
+
+3. Access the application:
+Open your web browser and go to `http://localhost:3001/` to interact with the AI-Powered Task Scheduler. Ensure that both the backend and frontend servers are running simultaneously for the application to function properly.
+
+
 
 
 ## Results
