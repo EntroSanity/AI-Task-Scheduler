@@ -28,10 +28,10 @@ interface SampleTaskCardProps {
 }
 
 const getColorByPoints = (points: number) => {
-    if (points >= 70) return "bg-gradient-to-br from-orange-100 to-red-200 border-red-300"
-    if (points >= 50) return "bg-gradient-to-br from-yellow-100 to-amber-200 border-amber-300"
-    if (points >= 30) return "bg-gradient-to-br from-green-100 to-emerald-200 border-emerald-300"
-    return "bg-gradient-to-br from-blue-100 to-cyan-200 border-cyan-300"
+    const minOpacity = 0.6
+    const maxOpacity = 0.9
+    const opacity = minOpacity + (points / 100) * (maxOpacity - minOpacity)
+    return `bg-purple-200 border-purple-300 bg-opacity-${Math.round(opacity * 100)}`
 }
 
 export function SampleTaskCard({ onAddTask, nextTaskId }: SampleTaskCardProps) {
@@ -182,10 +182,10 @@ export function SampleTaskCard({ onAddTask, nextTaskId }: SampleTaskCardProps) {
         return (
             <div className="flex flex-col justify-between h-full">
                 <div className="flex items-center justify-center flex-grow">
-                    <Plus className="w-12 h-12 text-gray-400" />
-                    <span className="ml-2 text-lg text-gray-500">Add New Task</span>
+                    <Plus className="w-12 h-12 text-purple-400" />
+                    <span className="ml-2 text-lg text-purple-600">Add New Task</span>
                 </div>
-                <div className="space-y-2 text-sm text-gray-500 mt-4">
+                <div className="space-y-2 text-sm text-purple-600 mt-4">
                     <div className="flex items-center">
                         <Users className="w-4 h-4 mr-2" />
                         <span>Required Resources</span>
@@ -218,12 +218,12 @@ export function SampleTaskCard({ onAddTask, nextTaskId }: SampleTaskCardProps) {
             whileHover={{ scale: 1.03, rotate: 1 }}
             transition={{ type: "spring", stiffness: 300 }}
         >
-            <Card className={`w-full max-w-sm border-2 ${isEditing ? cardColor : 'border-dashed border-gray-300'} shadow-lg transition-all duration-300 h-[400px]`}>
+            <Card className={`w-full max-w-sm border ${isEditing ? cardColor : 'bg-purple-100 bg-opacity-50 border-purple-100'} shadow-md transition-all duration-300 h-[400px]`}>
                 <CardHeader className="flex flex-row justify-between items-center pb-2">
                     <Badge variant="outline" className="text-sm font-semibold bg-white">{nextTaskId}</Badge>
                     <div className="flex items-center space-x-2">
                         {isEditing && (
-                            <Badge variant="secondary" className="bg-indigo-600 text-white text-sm font-bold">
+                            <Badge variant="secondary" className="bg-purple-600 text-white text-sm font-bold">
                                 {newTask.baseReward} points
                             </Badge>
                         )}
@@ -238,7 +238,7 @@ export function SampleTaskCard({ onAddTask, nextTaskId }: SampleTaskCardProps) {
                     </div>
                 </CardHeader>
                 <CardContent className="h-[calc(100%-60px)] overflow-y-auto">
-                    {isEditing ? <h3 className="text-xl font-bold mb-3 text-gray-800">{newTask.title || "New Task"}</h3> : null}
+                    {isEditing ? <h3 className="text-xl font-bold mb-3 text-purple-900">{newTask.title || "New Task"}</h3> : null}
                     {renderContent()}
                 </CardContent>
             </Card>
