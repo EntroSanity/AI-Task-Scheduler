@@ -14,37 +14,13 @@
         "estimated_complexity": 7,
         "potential_risks": [
           "Stakeholder resistance to change",
-          "Requirements gathering bias",
-          "Insufficient documentation"
+          "Insufficient requirements gathering",
+          "Scope creep"
         ],
         "required_skills": [
           "Requirements gathering",
           "Communication",
           "Analytical thinking"
-        ],
-        "suggested_priority": "high"
-      }
-    },
-    {
-      "id": "T12",
-      "title": "Business Development",
-      "start_time": 0,
-      "end_time": 10,
-      "resources": [
-        "NewGuy"
-      ],
-      "actual_reward": 30.0,
-      "llm_analysis": {
-        "estimated_complexity": 8,
-        "potential_risks": [
-          "Partnership agreement issues",
-          "Integration challenges",
-          "Insufficient communication"
-        ],
-        "required_skills": [
-          "Business development",
-          "Partnership management",
-          "Communication"
         ],
         "suggested_priority": "high"
       }
@@ -64,12 +40,12 @@
         "potential_risks": [
           "Design flaws",
           "Inadequate testing",
-          "Lack of design reviews"
+          "Technical debt"
         ],
         "required_skills": [
           "System design",
-          "Architecture",
-          "Technical expertise"
+          "Technical expertise",
+          "Problem-solving"
         ],
         "suggested_priority": "high"
       }
@@ -88,7 +64,7 @@
         "potential_risks": [
           "Code quality issues",
           "Integration challenges",
-          "Insufficient testing"
+          "Testing difficulties"
         ],
         "required_skills": [
           "Programming",
@@ -117,7 +93,7 @@
         "required_skills": [
           "Project management",
           "Communication",
-          "Stakeholder management"
+          "Stakeholder engagement"
         ],
         "suggested_priority": "medium"
       }
@@ -136,7 +112,7 @@
         "potential_risks": [
           "Code refactoring issues",
           "Integration challenges",
-          "Insufficient testing"
+          "Testing difficulties"
         ],
         "required_skills": [
           "Programming",
@@ -156,11 +132,11 @@
       ],
       "actual_reward": 11.297181459240004,
       "llm_analysis": {
-        "estimated_complexity": 6,
+        "estimated_complexity": 5,
         "potential_risks": [
-          "Test case inadequacy",
+          "Testing scope issues",
           "Bug introduction",
-          "Insufficient testing"
+          "Testing environment issues"
         ],
         "required_skills": [
           "Testing",
@@ -184,8 +160,8 @@
         "estimated_complexity": 8,
         "potential_risks": [
           "Regression testing issues",
-          "Performance testing challenges",
-          "Insufficient testing"
+          "System instability",
+          "Performance issues"
         ],
         "required_skills": [
           "Testing",
@@ -206,11 +182,11 @@
       ],
       "actual_reward": 55.61082646856262,
       "llm_analysis": {
-        "estimated_complexity": 5,
+        "estimated_complexity": 4,
         "potential_risks": [
           "Deployment issues",
-          "Production environment setup",
-          "Insufficient testing"
+          "Environment configuration issues",
+          "Post-deployment verification difficulties"
         ],
         "required_skills": [
           "Deployment",
@@ -219,32 +195,8 @@
         ],
         "suggested_priority": "medium"
       }
-    },
-    {
-      "id": "T9",
-      "title": "Marketing",
-      "start_time": 19,
-      "end_time": 23,
-      "resources": [
-        "Tohfah"
-      ],
-      "actual_reward": 1.5000000000000016e-18,
-      "llm_analysis": {
-        "estimated_complexity": 9,
-        "potential_risks": [
-          "Marketing strategy failure",
-          "Target audience misalignment",
-          "Insufficient budget"
-        ],
-        "required_skills": [
-          "Marketing",
-          "Advertising",
-          "Branding"
-        ],
-        "suggested_priority": "high"
-      }
     }
   ],
-  "total_time": 23,
-  "total_reward": 214.60127336717738
+  "total_time": 19,
+  "total_reward": 184.60127336717738
 }

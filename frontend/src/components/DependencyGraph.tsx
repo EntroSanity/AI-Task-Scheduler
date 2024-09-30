@@ -77,7 +77,7 @@ export function DependencyGraph() {
         if (loading) {
             return (
                 <div className="flex items-center justify-center h-64">
-                    <Loader2 className="w-8 h-8 animate-spin text-white" />
+                    <Loader2 className="w-8 h-8 animate-spin text-purple-600" />
                 </div>
             )
         }
@@ -86,9 +86,9 @@ export function DependencyGraph() {
             return (
                 <div className="space-y-4">
                     {responseInfo && (
-                        <div className="bg-white/10 p-4 rounded-md">
-                            <h4 className="font-semibold mb-2 text-white">Response Information:</h4>
-                            <pre className="whitespace-pre-wrap text-sm text-white/80">{responseInfo}</pre>
+                        <div className="bg-purple-200 p-4 rounded-md">
+                            <h4 className="font-semibold mb-2 text-purple-800">Response Information:</h4>
+                            <pre className="whitespace-pre-wrap text-sm text-purple-700">{responseInfo}</pre>
                         </div>
                     )}
                     <Button onClick={fetchGraph} variant="secondary">Retry</Button>
@@ -100,7 +100,7 @@ export function DependencyGraph() {
             return (
                 <>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-2xl font-bold text-white">Dependency Graph</CardTitle>
+                        <CardTitle className="text-2xl font-bold text-purple-800">Dependency Graph</CardTitle>
                         <Button onClick={handleDownload} variant="secondary" size="sm">
                             <Download className="w-4 h-4 mr-2" />
                             Download
@@ -124,7 +124,7 @@ export function DependencyGraph() {
         if (!graphData) {
             return (
                 <div className="flex items-center justify-center h-64">
-                    <p className="text-white">No graph data available.</p>
+                    <p className="text-purple-700">No graph data available.</p>
                 </div>
             )
         }
@@ -132,22 +132,22 @@ export function DependencyGraph() {
         return (
             <>
                 <CardHeader>
-                    <CardTitle className="text-2xl font-bold text-white">Dependency Graph</CardTitle>
+                    <CardTitle className="text-2xl font-bold text-purple-800">Dependency Graph</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <div className="overflow-x-auto">
-                        <table className="min-w-full divide-y divide-gray-200/20">
-                            <thead className="bg-white/10">
+                        <table className="min-w-full divide-y divide-purple-200">
+                            <thead className="bg-purple-50">
                                 <tr>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Task</th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Dependencies</th>
+                                    <th className="px-6 py-3 text-left text-xs font-medium text-purple-700 uppercase tracking-wider">Task</th>
+                                    <th className="px-6 py-3 text-left text-xs font-medium text-purple-700 uppercase tracking-wider">Dependencies</th>
                                 </tr>
                             </thead>
-                            <tbody className="bg-white/5 divide-y divide-gray-200/20">
+                            <tbody className="bg-white divide-y divide-purple-100">
                                 {graphData.nodes.map((node) => (
                                     <tr key={node.id}>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">{node.label}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-white/80">
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-purple-800">{node.label}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-purple-600">
                                             {graphData.edges
                                                 .filter((edge) => edge.to === node.id)
                                                 .map((edge) => graphData.nodes.find((n) => n.id === edge.from)?.label)
@@ -164,7 +164,7 @@ export function DependencyGraph() {
     }
 
     return (
-        <Card className="w-full bg-gradient-to-br from-indigo-400/30 to-purple-400/30 backdrop-blur-sm border-none shadow-lg overflow-hidden">
+        <Card className="w-full bg-purple-100 border-purple-600 border-4 shadow-lg overflow-hidden">
             {renderContent()}
         </Card>
     )

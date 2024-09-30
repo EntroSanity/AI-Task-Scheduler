@@ -116,46 +116,6 @@
       "requiredTime": 1,
       "rewardDecayFactor": 0.98,
       "description": "Prepare the system for production deployment. Create deployment scripts, set up production environments, and conduct final checks. Execute the deployment plan and perform post-deployment verification."
-    },
-    {
-      "id": "T9",
-      "title": "Marketing",
-      "baseReward": 15,
-      "dependencies": [
-        "T8"
-      ],
-      "requiredResources": [
-        "Tohfah"
-      ],
-      "requiredTime": 4,
-      "rewardDecayFactor": 0.1,
-      "description": "Marketing is the process of promoting, selling, and distributing products or services to customers. It involves identifying target audiences, understanding their needs, and developing strategies to attract and retain them. Key activities include market research, advertising, branding, and customer relationship management"
-    },
-    {
-      "id": "T12",
-      "title": "Business Development",
-      "baseReward": 30,
-      "dependencies": [],
-      "requiredResources": [
-        "NewGuy"
-      ],
-      "requiredTime": 10,
-      "rewardDecayFactor": 0.6,
-      "description": "Develop partnership with other projects"
-    },
-    {
-      "id": "T13",
-      "title": "Regular Meetup",
-      "baseReward": 2,
-      "dependencies": [
-        "T9"
-      ],
-      "requiredResources": [
-        "Yuhan"
-      ],
-      "requiredTime": 2,
-      "rewardDecayFactor": 0.1,
-      "description": "Regular sync up with dev and project manager"
     }
   ],
   "resources": [
@@ -163,7 +123,6 @@
     "Tohfah",
     "Zijan",
     "Amir",
-    "Yuhan",
-    "NewGuy"
+    "Yuhan"
   ]
 }

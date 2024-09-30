@@ -21,10 +21,10 @@ interface Task {
 }
 
 const getColorByPoints = (points: number) => {
-    if (points >= 70) return "bg-gradient-to-br from-orange-100 to-red-200 border-red-300"
-    if (points >= 50) return "bg-gradient-to-br from-yellow-100 to-amber-200 border-amber-300"
-    if (points >= 30) return "bg-gradient-to-br from-green-100 to-emerald-200 border-emerald-300"
-    return "bg-gradient-to-br from-blue-100 to-cyan-200 border-cyan-300"
+    const minOpacity = 0.6
+    const maxOpacity = 0.9
+    const opacity = minOpacity + (points / 100) * (maxOpacity - minOpacity)
+    return `bg-purple-200 border-purple-300 bg-opacity-${Math.round(opacity * 100)}`
 }
 
 interface TaskCardProps {

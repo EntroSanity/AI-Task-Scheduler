@@ -1,41 +1,34 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Loader2 } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Chart } from "react-google-charts"
 
 interface Task {
     id: string
     title: string
     start: string
     end: string
-    resources: string[]
-    dependencies: string[]
     progress: number
 }
 
 interface GanttData {
     tasks: Task[]
-    projectStart: string
-    projectEnd: string
 }
 
 interface GanttChartProps {
     refreshKey: number
 }
 
-// Define the correct type for column definitions
-type ColumnType = 'string' | 'number' | 'date'
-interface ColumnDef {
-    type: ColumnType
-    label: string
-}
-
 export function GanttChart({ refreshKey }: GanttChartProps) {
     const [chartData, setChartData] = useState<GanttData | null>(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
+    const [hoveredTask, setHoveredTask] = useState<Task | null>(null)
+    const chartRef = useRef<HTMLDivElement>(null)
+
+    // You can adjust this value to change the thickness of the task bars
+    const taskBarHeight = 'h-6'  // Increased from h-4 to h-6
 
     useEffect(() => {
         const fetchGanttData = async () => {
@@ -60,92 +53,99 @@ export function GanttChart({ refreshKey }: GanttChartProps) {
         fetchGanttData()
     }, [refreshKey])
 
-    const getRandomColor = () => {
-        const colors = ['#ffffff', '#ffa07a', '#98fb98', '#ffff00', '#ff69b4', '#20b2aa']
-        return colors[Math.floor(Math.random() * colors.length)]
+    const calculatePosition = (date: Date, startDate: Date, endDate: Date) => {
+        const totalDays = (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24)
+        const daysFromStart = (date.getTime() - startDate.getTime()) / (1000 * 3600 * 24)
+        return (daysFromStart / totalDays) * 100
     }
 
-    const formatChartData = (data: GanttData): (ColumnDef | string | Date | number | null)[][] => {
-        const columns: ColumnDef[] = [
-            { type: 'string', label: 'Task ID' },
-            { type: 'string', label: 'Task Name' },
-            { type: 'date', label: 'Start Date' },
-            { type: 'date', label: 'End Date' },
-            { type: 'number', label: 'Duration' },
-            { type: 'number', label: 'Percent Complete' },
-            { type: 'string', label: 'Dependencies' },
-        ]
-
-        const rows: (string | Date | number | null)[][] = data.tasks.map((task) => [
-            task.id,
-            task.title,
-            new Date(task.start),
-            new Date(task.end),
-            null,
-            task.progress,
-            task.dependencies.join(','),
-        ])
-
-        return [columns, ...rows]
+    const getDuration = (start: string, end: string) => {
+        const startDate = new Date(start)
+        const endDate = new Date(end)
+        const duration = (endDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24)
+        return Math.ceil(duration)
     }
 
     if (loading) {
         return (
-            <Card className="w-full h-64 flex items-center justify-center bg-gradient-to-br from-purple-500 to-indigo-600 border-none shadow-lg">
-                <Loader2 className="w-8 h-8 animate-spin text-white" />
+            <Card className="w-full h-64 flex items-center justify-center bg-purple-100 border-purple-600 border-4 shadow-lg">
+                <Loader2 className="w-8 h-8 animate-spin text-purple-600" />
             </Card>
         )
     }
 
     if (error) {
         return (
-            <Card className="w-full bg-gradient-to-br from-purple-500 to-indigo-600 border-none shadow-lg">
+            <Card className="w-full bg-purple-100 border-purple-600 border-4 shadow-lg">
                 <CardContent className="pt-6">
-                    <p className="text-white">Error loading Gantt chart: {error}</p>
+                    <p className="text-red-500 font-bold">Error loading Gantt chart: {error}</p>
                 </CardContent>
             </Card>
         )
     }
 
+    if (!chartData || chartData.tasks.length === 0) {
+        return (
+            <Card className="w-full bg-purple-100 border-purple-600 border-4 shadow-lg">
+                <CardContent className="pt-6">
+                    <p className="text-purple-700 font-bold">No data available for the Gantt chart.</p>
+                </CardContent>
+            </Card>
+        )
+    }
+
+    const startDate = new Date(Math.min(...chartData.tasks.map(task => new Date(task.start).getTime())))
+    const endDate = new Date(Math.max(...chartData.tasks.map(task => new Date(task.end).getTime())))
+
     return (
-        <Card className="w-full bg-gradient-to-br from-purple-500 to-indigo-600 border-none shadow-lg overflow-hidden">
+        <Card className="w-full bg-purple-100 border-purple-600 border-4 shadow-lg overflow-hidden">
             <CardHeader>
-                <CardTitle className="text-2xl font-bold text-white">Gantt Chart</CardTitle>
+                <CardTitle className="text-2xl font-bold text-purple-800">Gantt Chart</CardTitle>
             </CardHeader>
-            <CardContent className="p-0">
-                <div className="gantt-container" style={{ padding: '20px' }}>
-                    {chartData && (
-                        <Chart
-                            width={'100%'}
-                            height={'400px'}
-                            chartType="Gantt"
-                            loader={<div>Loading Chart</div>}
-                            data={formatChartData(chartData)}
-                            options={{
-                                height: 400,
-                                gantt: {
-                                    trackHeight: 30,
-                                    barCornerRadius: 10,
-                                    barHeight: 20,
-                                    innerGridHorizLine: {
-                                        stroke: 'rgba(255, 255, 255, 0.1)',
-                                        strokeWidth: 1,
-                                    },
-                                    innerGridTrack: { fill: 'transparent' },
-                                    innerGridDarkTrack: { fill: 'transparent' },
-                                },
-                                backgroundColor: 'transparent',
-                                hAxis: {
-                                    textStyle: { color: '#ffffff' },
-                                },
-                                vAxis: {
-                                    textStyle: { color: '#ffffff' },
-                                },
-                                tooltip: { isHtml: true },
-                            }}
-                            rootProps={{ 'data-testid': '1' }}
-                        />
-                    )}
+            <CardContent className="p-4">
+                <div className="gantt-container overflow-x-auto overflow-y-visible" ref={chartRef}>
+                    <div className="min-w-max relative pb-20 px-4"> {/* Added px-4 for horizontal padding */}
+                        {chartData.tasks.map((task, index) => (
+                            <div key={task.id} className="grid grid-cols-[200px,1fr] items-center h-16 mb-1">
+                                <div className="pr-4 text-right">
+                                    <span className="text-purple-700 font-bold text-lg">{task.title}</span>
+                                </div>
+                                <div className="relative h-full">
+                                    <div className="absolute inset-0 bg-purple-200 rounded-full"></div>
+                                    <div
+                                        className={`absolute top-1/2 -translate-y-1/2 ${taskBarHeight} bg-purple-500 rounded-full transition-all duration-200 ease-in-out hover:bg-purple-600 cursor-pointer`}
+                                        style={{
+                                            left: `${calculatePosition(new Date(task.start), startDate, endDate)}%`,
+                                            width: `${calculatePosition(new Date(task.end), startDate, endDate) -
+                                                calculatePosition(new Date(task.start), startDate, endDate)}%`,
+                                        }}
+                                        onMouseEnter={() => setHoveredTask(task)}
+                                        onMouseLeave={() => setHoveredTask(null)}
+                                    ></div>
+                                    {hoveredTask === task && (
+                                        <div
+                                            className="absolute bg-white border-2 border-purple-600 rounded-lg p-3 shadow-lg z-10 mt-2"
+                                            style={{
+                                                left: `${Math.min(
+                                                    calculatePosition(new Date(task.start), startDate, endDate),
+                                                    100 - 30
+                                                )}%`,
+                                                transform: 'translateX(-50%)',
+                                                top: index > chartData.tasks.length - 3 ? 'auto' : '100%',
+                                                bottom: index > chartData.tasks.length - 3 ? '100%' : 'auto',
+                                            }}
+                                        >
+                                            <h3 className="text-lg font-bold text-purple-800 mb-2">{task.title}</h3>
+                                            <p className="text-purple-700"><span className="font-bold">Duration:</span> {getDuration(task.start, task.end)} days</p>
+                                            <p className="text-purple-700"><span className="font-bold">Percent done:</span> {task.progress}%</p>
+                                            <p className="text-purple-700"><span className="font-bold">Start:</span> {new Date(task.start).toLocaleDateString()}</p>
+                                            <p className="text-purple-700"><span className="font-bold">End:</span> {new Date(task.end).toLocaleDateString()}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </CardContent>
         </Card>
