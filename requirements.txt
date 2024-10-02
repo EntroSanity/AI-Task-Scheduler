@@ -1,3 +1,4 @@
+setuptools>=70.0.0
 pygraphviz
 replicate
 click
@@ -6,3 +7,7 @@ matplotlib
 networkx
 plotly
 toml
+flask
+flask-cors
+requests
+Pillow

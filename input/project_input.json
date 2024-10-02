@@ -1,127 +1,164 @@
 {
-    "tasks": [
-        {
-            "id": "T1",
-            "title": "Project Initiation",
-            "description": "Kick off the project by defining its scope, objectives, and key stakeholders. Create a project charter and conduct an initial team meeting to align everyone on the project goals and timeline.",
-            "requiredTime": 2,
-            "dependencies": [
-                "T2"
-            ],
-            "requiredResources": [
-                "Mingrui"
-            ],
-            "baseReward": 20,
-            "rewardDecayFactor": 0.95
-        },
-        {
-            "id": "T2",
-            "title": "Requirements Gathering",
-            "description": "Conduct interviews and workshops with stakeholders to collect and document detailed project requirements. Create user stories, use cases, and a comprehensive requirements specification document.",
-            "requiredTime": 3,
-            "dependencies": [
-                "T1"
-            ],
-            "requiredResources": [
-                "Tohfah",
-                "Zijan"
-            ],
-            "baseReward": 30,
-            "rewardDecayFactor": 0.9
-        },
-        {
-            "id": "T3",
-            "title": "System Design",
-            "description": "Develop the high-level and low-level design of the system based on the gathered requirements. Create system architecture diagrams, database schemas, and API specifications. Conduct design reviews with the team.",
-            "requiredTime": 4,
-            "dependencies": [
-                "T2"
-            ],
-            "requiredResources": [
-                "Mingrui",
-                "Amir"
-            ],
-            "baseReward": 50,
-            "rewardDecayFactor": 0.85
-        },
-        {
-            "id": "T4",
-            "title": "Development Phase 1",
-            "description": "Begin the implementation of core system components based on the approved design. Set up the development environment, implement basic functionality, and establish coding standards for the team.",
-            "requiredTime": 5,
-            "dependencies": [
-                "T3"
-            ],
-            "requiredResources": [
-                "Zijan"
-            ],
-            "baseReward": 70,
-            "rewardDecayFactor": 0.8
-        },
-        {
-            "id": "T5",
-            "title": "Testing Phase 1",
-            "description": "Conduct initial testing of the developed components. Create and execute test cases, perform unit testing, and begin integration testing. Document any bugs or issues found during this phase.",
-            "requiredTime": 3,
-            "dependencies": [
-                "T4"
-            ],
-            "requiredResources": [
-                "Tohfah"
-            ],
-            "baseReward": 40,
-            "rewardDecayFactor": 0.9
-        },
-        {
-            "id": "T6",
-            "title": "Development Phase 2",
-            "description": "Continue system development by implementing advanced features and integrating various components. Refine existing code based on testing feedback and optimize performance where necessary.",
-            "requiredTime": 4,
-            "dependencies": [
-                "T4"
-            ],
-            "requiredResources": [
-                "Amir"
-            ],
-            "baseReward": 60,
-            "rewardDecayFactor": 0.85
-        },
-        {
-            "id": "T7",
-            "title": "Testing Phase 2",
-            "description": "Perform comprehensive system testing, including integration testing, performance testing, and user acceptance testing. Conduct thorough regression testing to ensure new features haven't impacted existing functionality.",
-            "requiredTime": 2,
-            "dependencies": [
-                "T5",
-                "T6"
-            ],
-            "requiredResources": [
-                "Tohfah",
-                "Mingrui"
-            ],
-            "baseReward": 45,
-            "rewardDecayFactor": 0.95
-        },
-        {
-            "id": "T8",
-            "title": "Deployment",
-            "description": "Prepare the system for production deployment. Create deployment scripts, set up production environments, and conduct final checks. Execute the deployment plan and perform post-deployment verification.",
-            "requiredTime": 1,
-            "dependencies": [
-                "T7"
-            ],
-            "requiredResources": [
-                "Zijan",
-                "Amir"
-            ],
-            "baseReward": 80,
-            "rewardDecayFactor": 0.98
-        }
-    ],
-    "resources": [
-        "Mingrui",
+  "tasks": [
+    {
+      "id": "T1",
+      "title": "Project Initiation",
+      "baseReward": 100,
+      "dependencies": [],
+      "requiredResources": [
+        "Mingrui"
+      ],
+      "requiredTime": 2,
+      "rewardDecayFactor": 0.95,
+      "description": "Kick off the project and define initial scope."
+    },
+    {
+      "id": "T2",
+      "title": "Requirements Gathering",
+      "baseReward": 80,
+      "dependencies": [
+        "T1",
+        "T4"
+      ],
+      "requiredResources": [
         "Tohfah",
+        "Zijan"
+      ],
+      "requiredTime": 3,
+      "rewardDecayFactor": 0.9,
+      "description": "Gather and refine requirements, including feedback from initial design."
+    },
+    {
+      "id": "T3",
+      "title": "System Architecture",
+      "baseReward": 90,
+      "dependencies": [
+        "T2",
+        "T5"
+      ],
+      "requiredResources": [
+        "Mingrui",
+        "Amir"
+      ],
+      "requiredTime": 4,
+      "rewardDecayFactor": 0.85,
+      "description": "Design system architecture, incorporating feedback from initial development."
+    },
+    {
+      "id": "T4",
+      "title": "Initial Design",
+      "baseReward": 70,
+      "dependencies": [
+        "T1",
+        "T3"
+      ],
+      "requiredResources": [
+        "Amir"
+      ],
+      "requiredTime": 3,
+      "rewardDecayFactor": 0.92,
+      "description": "Create initial design based on preliminary requirements and architecture."
+    },
+    {
+      "id": "T5",
+      "title": "Prototype Development",
+      "baseReward": 60,
+      "dependencies": [
+        "T2",
+        "T4"
+      ],
+      "requiredResources": [
+        "Zijan"
+      ],
+      "requiredTime": 5,
+      "rewardDecayFactor": 0.88,
+      "description": "Develop a prototype based on initial requirements and design."
+    },
+    {
+      "id": "T6",
+      "title": "User Interface Design",
+      "baseReward": 50,
+      "dependencies": [
+        "T2",
+        "T5"
+      ],
+      "requiredResources": [
+        "Tohfah"
+      ],
+      "requiredTime": 4,
+      "rewardDecayFactor": 0.9,
+      "description": "Design user interface based on requirements and prototype feedback."
+    },
+    {
+      "id": "T7",
+      "title": "Core Feature Development",
+      "baseReward": 85,
+      "dependencies": [
+        "T3",
+        "T5"
+      ],
+      "requiredResources": [
         "Zijan",
         "Amir"
-    ]
+      ],
+      "requiredTime": 6,
+      "rewardDecayFactor": 0.8,
+      "description": "Develop core features based on finalized architecture and prototype learnings."
+    },
+    {
+      "id": "T8",
+      "title": "Integration and Testing",
+      "baseReward": 75,
+      "dependencies": [
+        "T6",
+        "T7"
+      ],
+      "requiredResources": [
+        "Tohfah",
+        "Mingrui"
+      ],
+      "requiredTime": 5,
+      "rewardDecayFactor": 0.85,
+      "description": "Integrate components and perform system testing."
+    },
+    {
+      "id": "T9",
+      "title": "Documentation",
+      "baseReward": 40,
+      "dependencies": [
+        "T2",
+        "T3",
+        "T6"
+      ],
+      "requiredResources": [
+        "Yuhan"
+      ],
+      "requiredTime": 4,
+      "rewardDecayFactor": 0.95,
+      "description": "Create system documentation based on requirements, architecture, and UI design."
+    },
+    {
+      "id": "T10",
+      "title": "Deployment",
+      "baseReward": 95,
+      "dependencies": [
+        "T8",
+        "T9"
+      ],
+      "requiredResources": [
+        "Mingrui",
+        "Zijan"
+      ],
+      "requiredTime": 3,
+      "rewardDecayFactor": 0.98,
+      "description": "Deploy the system to production."
+    }
+  ],
+  "resources": [
+    "Mingrui",
+    "Tohfah",
+    "Zijan",
+    "Amir",
+    "Yuhan"
+  ]
 }

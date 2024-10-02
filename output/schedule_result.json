@@ -1,206 +1,251 @@
-[
-  {
-    "id": "T2",
-    "title": "Requirements Gathering",
-    "start_time": 0,
-    "end_time": 3,
-    "resources": [
-      "Tohfah",
-      "Zijan"
-    ],
-    "actual_reward": 30.0,
-    "llm_analysis": {
-      "estimated_complexity": 6,
-      "potential_risks": [
-        "Difficulty in identifying and engaging all relevant stakeholders",
-        "Risk of conflicting requirements or miscommunication",
-        "Time-consuming process that may impact project timeline"
+{
+  "scheduled_tasks": [
+    {
+      "id": "T1",
+      "title": "Project Initiation",
+      "start_time": 0,
+      "end_time": 2,
+      "resources": [
+        "Mingrui"
       ],
-      "required_skills": [
-        "Strong communication and interpersonal skills",
-        "Ability to facilitate effective workshops and interviews",
-        "Analytical and problem-solving skills to identify and document requirements",
-        "Familiarity with requirements gathering techniques and tools"
+      "actual_reward": 100.0,
+      "llm_analysis": {
+        "estimated_complexity": 3,
+        "potential_risks": [
+          "Unclear project scope",
+          "Insufficient resources",
+          "Lack of stakeholder buy-in"
+        ],
+        "required_skills": [
+          "Project management",
+          "Communication",
+          "Requirements gathering"
+        ],
+        "suggested_priority": "high"
+      }
+    },
+    {
+      "id": "T4",
+      "title": "Initial Design",
+      "start_time": 2,
+      "end_time": 5,
+      "resources": [
+        "Amir"
       ],
-      "suggested_priority": "medium"
+      "actual_reward": 59.248000000000005,
+      "llm_analysis": {
+        "estimated_complexity": 5,
+        "potential_risks": [
+          "Inadequate design",
+          "Insufficient feedback",
+          "Scope creep"
+        ],
+        "required_skills": [
+          "Design",
+          "Communication",
+          "Requirements gathering"
+        ],
+        "suggested_priority": "medium"
+      }
+    },
+    {
+      "id": "T2",
+      "title": "Requirements Gathering",
+      "start_time": 5,
+      "end_time": 8,
+      "resources": [
+        "Tohfah",
+        "Zijan"
+      ],
+      "actual_reward": 47.239200000000004,
+      "llm_analysis": {
+        "estimated_complexity": 6,
+        "potential_risks": [
+          "Misaligned requirements",
+          "Insufficient feedback",
+          "Scope creep"
+        ],
+        "required_skills": [
+          "Requirements gathering",
+          "Communication",
+          "Stakeholder management"
+        ],
+        "suggested_priority": "high"
+      }
+    },
+    {
+      "id": "T5",
+      "title": "Prototype Development",
+      "start_time": 8,
+      "end_time": 13,
+      "resources": [
+        "Zijan"
+      ],
+      "actual_reward": 21.578071488331776,
+      "llm_analysis": {
+        "estimated_complexity": 7,
+        "potential_risks": [
+          "Inadequate prototype",
+          "Insufficient testing",
+          "Scope creep"
+        ],
+        "required_skills": [
+          "Development",
+          "Testing",
+          "Requirements gathering"
+        ],
+        "suggested_priority": "high"
+      }
+    },
+    {
+      "id": "T3",
+      "title": "System Architecture",
+      "start_time": 13,
+      "end_time": 17,
+      "resources": [
+        "Mingrui",
+        "Amir"
+      ],
+      "actual_reward": 10.881494420917162,
+      "llm_analysis": {
+        "estimated_complexity": 8,
+        "potential_risks": [
+          "Inadequate architecture",
+          "Insufficient scalability",
+          "Security vulnerabilities"
+        ],
+        "required_skills": [
+          "System architecture",
+          "Design",
+          "Security"
+        ],
+        "suggested_priority": "high"
+      }
+    },
+    {
+      "id": "T6",
+      "title": "User Interface Design",
+      "start_time": 13,
+      "end_time": 17,
+      "resources": [
+        "Tohfah"
+      ],
+      "actual_reward": 12.709329141645004,
+      "llm_analysis": {
+        "estimated_complexity": 4,
+        "potential_risks": [
+          "Inadequate UI design",
+          "Insufficient feedback",
+          "User experience issues"
+        ],
+        "required_skills": [
+          "UI design",
+          "Communication",
+          "User experience"
+        ],
+        "suggested_priority": "medium"
+      }
+    },
+    {
+      "id": "T9",
+      "title": "Documentation",
+      "start_time": 17,
+      "end_time": 21,
+      "resources": [
+        "Yuhan"
+      ],
+      "actual_reward": 16.724813408767083,
+      "llm_analysis": {
+        "estimated_complexity": 4,
+        "potential_risks": [
+          "Inadequate documentation",
+          "Insufficient feedback",
+          "User documentation issues"
+        ],
+        "required_skills": [
+          "Documentation",
+          "Communication",
+          "User experience"
+        ],
+        "suggested_priority": "medium"
+      }
+    },
+    {
+      "id": "T7",
+      "title": "Core Feature Development",
+      "start_time": 17,
+      "end_time": 23,
+      "resources": [
+        "Zijan",
+        "Amir"
+      ],
+      "actual_reward": 1.9140298416324628,
+      "llm_analysis": {
+        "estimated_complexity": 9,
+        "potential_risks": [
+          "Inadequate feature development",
+          "Insufficient testing",
+          "Integration issues"
+        ],
+        "required_skills": [
+          "Development",
+          "Testing",
+          "Integration"
+        ],
+        "suggested_priority": "high"
+      }
+    },
+    {
+      "id": "T8",
+      "title": "Integration and Testing",
+      "start_time": 23,
+      "end_time": 28,
+      "resources": [
+        "Tohfah",
+        "Mingrui"
+      ],
+      "actual_reward": 1.7852397770458024,
+      "llm_analysis": {
+        "estimated_complexity": 8,
+        "potential_risks": [
+          "Integration issues",
+          "Testing issues",
+          "Deployment issues"
+        ],
+        "required_skills": [
+          "Integration",
+          "Testing",
+          "Deployment"
+        ],
+        "suggested_priority": "high"
+      }
+    },
+    {
+      "id": "T10",
+      "title": "Deployment",
+      "start_time": 28,
+      "end_time": 31,
+      "resources": [
+        "Mingrui",
+        "Zijan"
+      ],
+      "actual_reward": 53.95773671525563,
+      "llm_analysis": {
+        "estimated_complexity": 6,
+        "potential_risks": [
+          "Deployment issues",
+          "System downtime",
+          "User adoption issues"
+        ],
+        "required_skills": [
+          "Deployment",
+          "System administration",
+          "User experience"
+        ],
+        "suggested_priority": "high"
+      }
     }
-  },
-  {
-    "id": "T3",
-    "title": "System Design",
-    "start_time": 3,
-    "end_time": 7,
-    "resources": [
-      "Mingrui",
-      "Amir"
-    ],
-    "actual_reward": 30.706249999999997,
-    "llm_analysis": {
-      "estimated_complexity": 7,
-      "potential_risks": [
-        "Difficulty in understanding the requirements",
-        "Conflicting opinions among team members",
-        "Inadequate design documentation"
-      ],
-      "required_skills": [
-        "System design experience",
-        "Knowledge of architecture patterns",
-        "Database design skills",
-        "API design skills",
-        "Communication and collaboration skills"
-      ],
-      "suggested_priority": "medium"
-    }
-  },
-  {
-    "id": "T4",
-    "title": "Development Phase 1",
-    "start_time": 7,
-    "end_time": 12,
-    "resources": [
-      "Zijan"
-    ],
-    "actual_reward": 14.680064000000005,
-    "llm_analysis": {
-      "estimated_complexity": 6,
-      "potential_risks": [
-        "Insufficient understanding of the approved design",
-        "Inadequate setup of the development environment",
-        "Difficulty in establishing coding standards for the team"
-      ],
-      "required_skills": [
-        "Programming skills (e.g. Java, Python, C++)",
-        "Understanding of software development life cycle",
-        "Experience with setting up development environments",
-        "Knowledge of coding standards and best practices"
-      ],
-      "suggested_priority": "medium"
-    }
-  },
-  {
-    "id": "T1",
-    "title": "Project Initiation",
-    "start_time": 7,
-    "end_time": 9,
-    "resources": [
-      "Mingrui"
-    ],
-    "actual_reward": 13.966745921874995,
-    "llm_analysis": {
-      "estimated_complexity": 6,
-      "potential_risks": [
-        "Insufficient project scope definition, leading to scope creep",
-        "Failure to identify and engage key stakeholders, resulting in lack of buy-in",
-        "Inadequate project charter, leading to unclear project goals and objectives"
-      ],
-      "required_skills": [
-        "Project management",
-        "Communication",
-        "Collaboration",
-        "Analytical thinking"
-      ],
-      "suggested_priority": "medium"
-    }
-  },
-  {
-    "id": "T5",
-    "title": "Testing Phase 1",
-    "start_time": 12,
-    "end_time": 15,
-    "resources": [
-      "Tohfah"
-    ],
-    "actual_reward": 11.297181459240004,
-    "llm_analysis": {
-      "estimated_complexity": 6,
-      "potential_risks": [
-        "Difficulty in creating comprehensive test cases",
-        "Potential for integration issues due to component complexity",
-        "Time-consuming process of debugging and documenting bugs"
-      ],
-      "required_skills": [
-        "Programming skills (depending on the programming language used)",
-        "Understanding of software testing principles and methodologies",
-        "Ability to create clear and concise documentation"
-      ],
-      "suggested_priority": "medium"
-    }
-  },
-  {
-    "id": "T6",
-    "title": "Development Phase 2",
-    "start_time": 12,
-    "end_time": 16,
-    "resources": [
-      "Amir"
-    ],
-    "actual_reward": 8.534505428170323,
-    "llm_analysis": {
-      "estimated_complexity": 7,
-      "potential_risks": [
-        "Integration of new features may introduce bugs or compatibility issues",
-        "Optimizing performance may require significant changes to existing codebase",
-        "Testing feedback may require significant rework of existing code"
-      ],
-      "required_skills": [
-        "Software development skills (e.g. programming languages, frameworks)",
-        "Understanding of system architecture and component integration",
-        "Testing and debugging skills",
-        "Performance optimization skills"
-      ],
-      "suggested_priority": "medium"
-    }
-  },
-  {
-    "id": "T7",
-    "title": "Testing Phase 2",
-    "start_time": 16,
-    "end_time": 18,
-    "resources": [
-      "Tohfah",
-      "Mingrui"
-    ],
-    "actual_reward": 19.80570008932944,
-    "llm_analysis": {
-      "estimated_complexity": 8,
-      "potential_risks": [
-        "Testing a complex system with multiple integrations",
-        "Identifying and reproducing issues with new features",
-        "Potential downtime or performance degradation during testing"
-      ],
-      "required_skills": [
-        "Software testing experience",
-        "Knowledge of integration testing, performance testing, and user acceptance testing",
-        "Understanding of the system architecture and functionality",
-        "Analytical and problem-solving skills"
-      ],
-      "suggested_priority": "medium"
-    }
-  },
-  {
-    "id": "T8",
-    "title": "Deployment",
-    "start_time": 18,
-    "end_time": 19,
-    "resources": [
-      "Zijan",
-      "Amir"
-    ],
-    "actual_reward": 55.61082646856262,
-    "llm_analysis": {
-      "estimated_complexity": 7,
-      "potential_risks": [
-        "Dependence on specific infrastructure or software",
-        "Potential downtime or data loss during deployment",
-        "Unforeseen issues with production environment setup"
-      ],
-      "required_skills": [
-        "System administration",
-        "Scripting knowledge (e.g. Python, Bash)",
-        "Understanding of production environment setup and configuration",
-        "Troubleshooting and debugging skills"
-      ],
-      "suggested_priority": "medium"
-    }
-  }
-]
+  ],
+  "total_time": 31,
+  "total_reward": 326.0379147935949
+}
