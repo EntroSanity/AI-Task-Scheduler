@@ -1,202 +1,251 @@
 {
   "scheduled_tasks": [
     {
-      "id": "T2",
-      "title": "Requirements Gathering",
+      "id": "T1",
+      "title": "Project Initiation",
       "start_time": 0,
-      "end_time": 3,
+      "end_time": 2,
       "resources": [
-        "Tohfah",
-        "Zijan"
+        "Mingrui"
       ],
-      "actual_reward": 30.0,
+      "actual_reward": 100.0,
       "llm_analysis": {
-        "estimated_complexity": 7,
+        "estimated_complexity": 3,
         "potential_risks": [
-          "Stakeholder resistance to change",
-          "Insufficient requirements gathering",
-          "Scope creep"
+          "Unclear project scope",
+          "Insufficient resources",
+          "Lack of stakeholder buy-in"
         ],
         "required_skills": [
-          "Requirements gathering",
+          "Project management",
           "Communication",
-          "Analytical thinking"
-        ],
-        "suggested_priority": "high"
-      }
-    },
-    {
-      "id": "T3",
-      "title": "System Design",
-      "start_time": 3,
-      "end_time": 7,
-      "resources": [
-        "Mingrui",
-        "Amir"
-      ],
-      "actual_reward": 30.706249999999997,
-      "llm_analysis": {
-        "estimated_complexity": 8,
-        "potential_risks": [
-          "Design flaws",
-          "Inadequate testing",
-          "Technical debt"
-        ],
-        "required_skills": [
-          "System design",
-          "Technical expertise",
-          "Problem-solving"
+          "Requirements gathering"
         ],
         "suggested_priority": "high"
       }
     },
     {
       "id": "T4",
-      "title": "Development Phase 1",
-      "start_time": 7,
-      "end_time": 12,
-      "resources": [
-        "Zijan"
-      ],
-      "actual_reward": 14.680064000000005,
-      "llm_analysis": {
-        "estimated_complexity": 6,
-        "potential_risks": [
-          "Code quality issues",
-          "Integration challenges",
-          "Testing difficulties"
-        ],
-        "required_skills": [
-          "Programming",
-          "Development",
-          "Testing"
-        ],
-        "suggested_priority": "medium"
-      }
-    },
-    {
-      "id": "T1",
-      "title": "Project Initiation",
-      "start_time": 7,
-      "end_time": 9,
-      "resources": [
-        "Mingrui"
-      ],
-      "actual_reward": 13.966745921874995,
-      "llm_analysis": {
-        "estimated_complexity": 5,
-        "potential_risks": [
-          "Unclear project scope",
-          "Stakeholder misalignment",
-          "Insufficient resources"
-        ],
-        "required_skills": [
-          "Project management",
-          "Communication",
-          "Stakeholder engagement"
-        ],
-        "suggested_priority": "medium"
-      }
-    },
-    {
-      "id": "T6",
-      "title": "Development Phase 2",
-      "start_time": 12,
-      "end_time": 16,
+      "title": "Initial Design",
+      "start_time": 2,
+      "end_time": 5,
       "resources": [
         "Amir"
       ],
-      "actual_reward": 8.534505428170323,
+      "actual_reward": 59.248000000000005,
       "llm_analysis": {
-        "estimated_complexity": 7,
+        "estimated_complexity": 5,
         "potential_risks": [
-          "Code refactoring issues",
-          "Integration challenges",
-          "Testing difficulties"
+          "Inadequate design",
+          "Insufficient feedback",
+          "Scope creep"
         ],
         "required_skills": [
-          "Programming",
-          "Development",
-          "Testing"
+          "Design",
+          "Communication",
+          "Requirements gathering"
+        ],
+        "suggested_priority": "medium"
+      }
+    },
+    {
+      "id": "T2",
+      "title": "Requirements Gathering",
+      "start_time": 5,
+      "end_time": 8,
+      "resources": [
+        "Tohfah",
+        "Zijan"
+      ],
+      "actual_reward": 47.239200000000004,
+      "llm_analysis": {
+        "estimated_complexity": 6,
+        "potential_risks": [
+          "Misaligned requirements",
+          "Insufficient feedback",
+          "Scope creep"
+        ],
+        "required_skills": [
+          "Requirements gathering",
+          "Communication",
+          "Stakeholder management"
         ],
         "suggested_priority": "high"
       }
     },
     {
       "id": "T5",
-      "title": "Testing Phase 1",
-      "start_time": 12,
-      "end_time": 15,
+      "title": "Prototype Development",
+      "start_time": 8,
+      "end_time": 13,
+      "resources": [
+        "Zijan"
+      ],
+      "actual_reward": 21.578071488331776,
+      "llm_analysis": {
+        "estimated_complexity": 7,
+        "potential_risks": [
+          "Inadequate prototype",
+          "Insufficient testing",
+          "Scope creep"
+        ],
+        "required_skills": [
+          "Development",
+          "Testing",
+          "Requirements gathering"
+        ],
+        "suggested_priority": "high"
+      }
+    },
+    {
+      "id": "T3",
+      "title": "System Architecture",
+      "start_time": 13,
+      "end_time": 17,
+      "resources": [
+        "Mingrui",
+        "Amir"
+      ],
+      "actual_reward": 10.881494420917162,
+      "llm_analysis": {
+        "estimated_complexity": 8,
+        "potential_risks": [
+          "Inadequate architecture",
+          "Insufficient scalability",
+          "Security vulnerabilities"
+        ],
+        "required_skills": [
+          "System architecture",
+          "Design",
+          "Security"
+        ],
+        "suggested_priority": "high"
+      }
+    },
+    {
+      "id": "T6",
+      "title": "User Interface Design",
+      "start_time": 13,
+      "end_time": 17,
       "resources": [
         "Tohfah"
       ],
-      "actual_reward": 11.297181459240004,
+      "actual_reward": 12.709329141645004,
       "llm_analysis": {
-        "estimated_complexity": 5,
+        "estimated_complexity": 4,
         "potential_risks": [
-          "Testing scope issues",
-          "Bug introduction",
-          "Testing environment issues"
+          "Inadequate UI design",
+          "Insufficient feedback",
+          "User experience issues"
         ],
         "required_skills": [
-          "Testing",
-          "Debugging",
-          "Analytical thinking"
+          "UI design",
+          "Communication",
+          "User experience"
+        ],
+        "suggested_priority": "medium"
+      }
+    },
+    {
+      "id": "T9",
+      "title": "Documentation",
+      "start_time": 17,
+      "end_time": 21,
+      "resources": [
+        "Yuhan"
+      ],
+      "actual_reward": 16.724813408767083,
+      "llm_analysis": {
+        "estimated_complexity": 4,
+        "potential_risks": [
+          "Inadequate documentation",
+          "Insufficient feedback",
+          "User documentation issues"
+        ],
+        "required_skills": [
+          "Documentation",
+          "Communication",
+          "User experience"
         ],
         "suggested_priority": "medium"
       }
     },
     {
       "id": "T7",
-      "title": "Testing Phase 2",
-      "start_time": 16,
-      "end_time": 18,
+      "title": "Core Feature Development",
+      "start_time": 17,
+      "end_time": 23,
       "resources": [
-        "Tohfah",
-        "Mingrui"
+        "Zijan",
+        "Amir"
       ],
-      "actual_reward": 19.80570008932944,
+      "actual_reward": 1.9140298416324628,
       "llm_analysis": {
-        "estimated_complexity": 8,
+        "estimated_complexity": 9,
         "potential_risks": [
-          "Regression testing issues",
-          "System instability",
-          "Performance issues"
+          "Inadequate feature development",
+          "Insufficient testing",
+          "Integration issues"
         ],
         "required_skills": [
+          "Development",
           "Testing",
-          "Debugging",
-          "Analytical thinking"
+          "Integration"
         ],
         "suggested_priority": "high"
       }
     },
     {
       "id": "T8",
-      "title": "Deployment",
-      "start_time": 18,
-      "end_time": 19,
+      "title": "Integration and Testing",
+      "start_time": 23,
+      "end_time": 28,
       "resources": [
-        "Zijan",
-        "Amir"
+        "Tohfah",
+        "Mingrui"
       ],
-      "actual_reward": 55.61082646856262,
+      "actual_reward": 1.7852397770458024,
       "llm_analysis": {
-        "estimated_complexity": 4,
+        "estimated_complexity": 8,
+        "potential_risks": [
+          "Integration issues",
+          "Testing issues",
+          "Deployment issues"
+        ],
+        "required_skills": [
+          "Integration",
+          "Testing",
+          "Deployment"
+        ],
+        "suggested_priority": "high"
+      }
+    },
+    {
+      "id": "T10",
+      "title": "Deployment",
+      "start_time": 28,
+      "end_time": 31,
+      "resources": [
+        "Mingrui",
+        "Zijan"
+      ],
+      "actual_reward": 53.95773671525563,
+      "llm_analysis": {
+        "estimated_complexity": 6,
         "potential_risks": [
           "Deployment issues",
-          "Environment configuration issues",
-          "Post-deployment verification difficulties"
+          "System downtime",
+          "User adoption issues"
         ],
         "required_skills": [
           "Deployment",
           "System administration",
-          "Troubleshooting"
+          "User experience"
         ],
-        "suggested_priority": "medium"
+        "suggested_priority": "high"
       }
     }
   ],
-  "total_time": 19,
-  "total_reward": 184.60127336717738
+  "total_time": 31,
+  "total_reward": 326.0379147935949
 }
