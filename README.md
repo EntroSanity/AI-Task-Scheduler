@@ -14,7 +14,7 @@ docker pull ntosnaky/ai-task-scheduler:v0.1
 ```
 docker run -p 3001:3000 -p 8080:8080 \                      
   -e REPLICATE_API_TOKEN=<your_replicate_API_token> \
-  ntosnaky/ai-task-scheduler:v0.1
+  ntosnaky/ai-task-scheduler:v0.5
 ```
 3. Access the application: Open your web browser and go to:
 ```
