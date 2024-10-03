@@ -8,7 +8,7 @@ The AI-Powered Task Scheduler is an advanced project management tool that levera
 For a quick setup and run of the AI-Powered Task Scheduler, you can use our Docker image. Follow these steps:
 1. Pull the Docker image:
 ```
-docker pull ntosnaky/ai-task-scheduler:v0.1
+docker pull ntosnaky/ai-task-scheduler:v0.5
 ```
 2. Run the Docker container:
 ```
