@@ -192,11 +192,11 @@ Here's an example of the output generated in `schedule_result.json`, which shows
 
 ### Dependency Graph
 The following image shows the generated dependency graph for the project tasks, which visualizes the dependencies between different tasks, helping to identify the project's critical path and potential bottlenecks:
-![image](https://imagedelivery.net/0LwqpAMWL2C8o12h9UoZew/ac12243c-1e30-49b9-76a5-9c52af20fc00/public)
+![image](https://imagedelivery.net/0LwqpAMWL2C8o12h9UoZew/7680318e-28cb-45c0-1302-0269a8989f00/public)
 
 ### Gantt Chart
 The Gantt chart generated from the scheduled tasks is shown below, which provides a timeline view of the scheduled tasks, showing their start and end dates, duration, and the resources assigned to each task.
-![image](https://imagedelivery.net/0LwqpAMWL2C8o12h9UoZew/d29f0a31-557f-4143-2688-a39e50014900/public)
+![image](https://imagedelivery.net/0LwqpAMWL2C8o12h9UoZew/29699b49-b07a-4311-652b-b06403f0b400/public)
 
 
 ## License
